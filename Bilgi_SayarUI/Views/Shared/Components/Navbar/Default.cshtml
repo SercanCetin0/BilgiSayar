@@ -1,0 +1,47 @@
+﻿@model List<Category>
+
+
+
+<nav class="navbar navbar-expand-custom navbar-mainbg shadow">
+    <a class="navbar-brand navbar-logo text-white" asp-action="Index" asp-area="" asp-controller="Default">Bilgi Sayar <i class="fa-solid fa-computer"></i></a>
+    <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars text-white"></i>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto mx-1  ">
+            <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
+
+
+            <li class="nav-item ">
+                <a class="nav-link" asp-action="Index" asp-area="" asp-controller="Default"><i class="fa-solid fa-house"></i>Anasayfa</a>
+            </li>
+            @foreach (var item in Model)
+            {
+                <li class="nav-item">
+                    <a class="nav-link" asp-action="GetByCategory" asp-area="" asp-controller="Default" asp-route-categoryId="@item.CategoryId">@item.CategoryName</a>
+                </li>
+            }
+
+
+
+            <partial name="_SignIn-Out"/>
+
+
+            @* Action aspcontroller ver sonra methodla çağir *@
+            <li class="nav-item rounded-3">
+                <form method="get" asp-action="GetByCategory">
+                    <div class="form-group btn-group my-3 rounded-3">
+
+
+                        <input type="text" class="form-control" name="search" placeholder="Arama" />
+                        <button type="submit" class="btn btn-sm btn-ligth text-white"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
+                </form>
+
+            </li>
+
+
+        </ul>
+
+    </div>
+</nav>

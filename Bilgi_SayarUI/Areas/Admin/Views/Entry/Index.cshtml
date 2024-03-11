@@ -1,0 +1,93 @@
+﻿@using Entities.Concrete
+@model List<Entry>
+
+@{
+}
+<div class="row">
+    <div class="col-md-9">
+
+
+
+<table class="table table-hover container my-3">
+
+
+    <thead>
+
+    <th>Id</th>
+    <th>Category</th>
+    <th>Writer</th>
+    <th>Title</th>
+   
+    <th>Release Date</th>
+    <th>Statu</th>
+    <th>Operations</th>
+
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ContentId</td>
+                <td>@item.CategoryId</td>
+                <td>@item.WriterId</td>
+                <td>@item.Title</td>
+               
+                <td>@item.ReleaseDate</td>
+                <td>
+                    @if (item.Statu==true)
+                    {
+                        <div class="bg-success text-center text-white rounded container my-3">Active</div>
+                    }
+                    else
+                    {
+                        <div class="bg-danger text-center text-white rounded container my-3">Passive</div>
+                    }
+
+
+                </td>
+
+                <td>
+                    <div class="btn btn-group">
+                        <a class="btn btn-warning text-black " type="submit" asp-action="UpdateEntry" asp-area="Admin" asp-controller="Entry" asp-route-id="@item.ContentId"><i class="fa-solid fa-wrench"></i> Change The Status</a>
+                        <a class="btn btn-outline-danger text-black" type="submit" asp-action="DeleteEntry" asp-area="Admin" asp-controller="Entry" asp-route-id="@item.ContentId">Delete <i class="fa-solid fa-trash"></i></a>
+
+
+
+
+                    </div>
+
+
+                </td>
+
+
+
+            </tr>
+        }
+
+
+    </tbody>
+
+
+
+
+</table>
+</div>
+
+<div class="col-md-3 my-3">
+
+        <form method="get" asp-action="Index" asp-controller="Entry" asp-area="Admin">
+            
+            @* Buraya Pasifleri ARa*@
+            
+            <div class="form-group btn-group my-3 rounded-3">
+
+                <input type="text" class="form-control" name="search" placeholder="Arama" />
+                <button type="submit" class="btn btn-sm btn-primary "><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+        </form>
+
+</div>
+
+
+</div>

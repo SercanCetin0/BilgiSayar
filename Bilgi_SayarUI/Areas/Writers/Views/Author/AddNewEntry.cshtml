@@ -1,0 +1,54 @@
+﻿@model EntryDto
+
+
+<div class="row container" >
+    <div class="col-md-3"></div>
+    <div class="col-md-6 mb-3 my-3 text-center shadow" style="position:absolute; top:25%; left:24%;  ">
+   
+        <div class="lead my-3  text-center"><i class="fa-solid fa-pen-nib"></i> Yeni Yazı</div>
+<form method="post" class="container my-3   " >
+    
+    <input type="hidden"value="@Model.WriterId"/>
+
+    <div class="form-floating mb-3 my-3">
+        <input type="text" asp-for="Title" class="form-control" id="floatingInput">
+     
+        <label for="floatingInput">Başlık</label>
+    </div>
+
+
+            <select class="form-control" asp-for="CategoryId">
+                
+                @foreach (var item in Model.Categories)
+                {
+                    <option value="@item.CategoryId">@item.CategoryName</option>
+                }
+            </select>
+
+
+
+ 
+       
+    </select>
+
+    <div class="row justify-content-between text-left my-3">
+       <input type="file" asp-for="İmage" name="İmage" accept=".jpg, .jpeg, .png">
+    </div> 
+    <div class="mb-3 my-3">
+        
+        <textarea class="form-control" asp-for="Text" id="exampleFormControlTextarea1" placeholder="Metin Giriniz" rows="5"></textarea>
+    </div>
+    
+    <div class="text-danger lead"> Yazınız Onay Sürecinden Geçtikten Sonra Yayınlanacaktır!</div>
+
+
+    <div class="text-center my-3">
+                <button type="submit" class="btn btn-outline-primary" asp-action="AddNewEntry" asp-controller="Author" asp-area="Writers" asp-route-editorUsername="@(Context.Request.HttpContext.Session.GetString("editorUsername"))">Kaydet</button>
+
+        <a class="btn btn-outline-danger" asp-action="Index" asp-controller="Default" asp-area="" >Anasayfaya Git</a>
+
+    </div>
+</form>
+    </div>
+    <div class="col-md-3"></div>
+</div>

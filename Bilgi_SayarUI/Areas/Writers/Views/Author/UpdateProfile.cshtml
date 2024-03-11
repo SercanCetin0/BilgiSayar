@@ -1,0 +1,70 @@
+﻿@model Writer
+
+
+
+@section Head
+{
+    <link rel="stylesheet" href="~/css/Profile/UpdateProfile.css" />
+}
+
+
+<div class="container-fluid px-1 py-5 mx-auto">
+    <div class="row d-flex justify-content-center">
+        <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+         
+            
+            <div class="card">
+                
+                <h5 class="text-center mb-4">Merhaba @Model.WriterFirstName @Model.WriterLastName</h5>
+                <form class="form-card" method="post" >
+
+                    
+                    <input type="hidden" asp-for="WriterNickname"/>
+                    <input type="hidden" asp-for="WriterId" />
+                   
+                    
+                    <div class="form-floating mb-3">
+                        <input type="text" asp-for="WriterFirstName" class="form-control" id="floatingInput">
+                        <label for="floatingInput">İsminiz</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" asp-for="WriterLastName" class="form-control" id="floatingInput">
+                        <label for="floatingInput">Soyadınız</label>
+                    </div>
+                    
+                    <div class="form-floating mb-3">
+                        <input type="text" asp-for="WriterEmail" class="form-control" id="floatingInput">
+                        <label for="floatingInput">Email</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" asp-for="WriterBio" id="exampleFormControlTextarea1" placeholder="Metin Giriniz" rows="5"></textarea>
+
+                        <label for="floatingInput">Biyografi</label>
+                    </div>
+
+                    <div class="row justify-content-between text-left">
+                        <img class=" about-avatar form-group col-sm-3 flex-column d-flex" src="~/image/ProfileImage/@Model.WriterImage" />
+                    </div>
+                    <div class="row justify-content-between text-left">
+                        <input type="file" asp-for="WriterImage" accept=".jpg, .jpeg, .png"  value="@Model.WriterImage">
+                    </div>
+                   <div class="text-left  text-secondary my-3 lead">
+
+                       Şifre Değişikliği İçin Talepte Bulununuz.
+                   </div>
+
+                   <div class="text-center">
+                        <button type="submit" class="btn btn-outline-primary" asp-action="UpdateProfile" asp-controller="Author" asp-area="Writers" >Kaydet</button>
+
+                        <a class="btn btn-outline-danger" asp-action="Index" asp-controller="Author" asp-area="Writers" asp-route-editorUserName="@(Context.Request.HttpContext.Session.GetString("editorUsername"))">Profile Git</a>
+
+                   </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

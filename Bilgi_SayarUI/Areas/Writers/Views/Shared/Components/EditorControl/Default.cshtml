@@ -1,0 +1,38 @@
+﻿<script>
+    // Örnek bir statü değişkeni (true: aktif, false: pasif)
+    var status = ViewBag.Statu;
+
+    // Statüye göre div ve link durumunu kontrol et
+    if (status) {
+        document.getElementById('yeniYaziEkleDiv').classList.remove('disabled'); // Eğer aktifse pasif sınıfını kaldır
+        document.getElementById('yeniYaziEkleLink').href = "/Writers/Author/AddNewEntry"; // Eğer aktifse bağlantıyı ekleyin
+    } else {
+        document.getElementById('yeniYaziEkleDiv').classList.add('disabled'); // Eğer pasifse pasif sınıfını ekle
+        document.getElementById('yeniYaziEkleLink').removeAttribute('href'); // Eğer pasifse bağlantıyı kaldır
+    }
+</script>
+
+
+@if (ViewBag.editor == (Context.Request.HttpContext.Session.GetString("editorUsername")))
+{
+    <div class="d-flex flex-row text-white my-3 rounded " >
+        <div class="p-4 bg-primary border-1 text-center skill-block  rounded-corner-right " >
+
+            <h3><a  class="text-white" asp-action="AddNewEntry" asp-area="Writers" asp-controller="Author" >Yeni Yazı Ekle</a></h3>
+        </div>
+        <div class="p-3 bg-success text-center skill-block ">
+
+            <h3><a class="text-white" asp-area="Writers" asp-controller="Author" asp-action="UpdateProfile">Profil Güncelle</a></h3>
+        </div>
+        <div class="p-3 bg-warning text-center skill-block ">
+
+            <h3><a class="text-white" asp-action="Index" asp-controller="Default" asp-area="">Web</a></h3>
+        </div>
+        <div class="p-3 bg-danger text-center skill-block  rounded-corner-left">
+
+            <h3><a class="text-white" asp-action="Logout" asp-area="" asp-controller="Account">Çıkış</a></h3>
+        </div>
+    </div>
+}
+
+

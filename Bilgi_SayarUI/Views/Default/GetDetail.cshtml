@@ -1,0 +1,46 @@
+﻿@model EntryDto
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <!-- Post content-->
+            <article>
+                <!-- Post header-->
+                <header class="mb-4">
+                    <!-- Post title-->
+                    <h1 class="fw-bolder mb-1">@Model.Entry.Title</h1>
+                    <!-- Post meta content-->
+                    <div class="row">
+                        <div class="text-muted col-md-3 fst-italic mb-2">@Model.Entry.ReleaseDate</div>
+                    </div>
+                   
+                    
+                    <!-- Post categories-->
+                    @* <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
+                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a> *@
+                </header>
+                <!-- Preview image figure-->
+                <figure class="mb-4"><img class="img-fluid rounded" src="~/image/@Model.Entry.İmage" alt="..." /></figure>
+                <!-- Post content-->
+                <section class="mb-5 ">
+                    <p class="fs-5 mb-4 lh-base">@Model.Entry.Text</p>
+                   
+                </section>
+                <div class="row">
+                    <div class="col-md-10"><hr  /></div>
+                    <div class="col-md-2"><a class="badge text-primary fs-5  text-decoration-none link-light " asp-area="Writers" asp-controller="Author" asp-action="Index" asp-route-editorProfile="@Model.Writer.WriterNickname">@Model.Writer.WriterNickname.ToUpper()</a></div>
+
+
+                </div>
+            </article>
+           
+            
+        </div>
+        <!-- Side widgets-->
+
+    </div>
+</div>

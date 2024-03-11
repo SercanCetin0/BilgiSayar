@@ -1,0 +1,48 @@
+﻿@using Bilgi_SayarUI.Infrastructure.Extensions
+
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <li class="nav-item">
+        <a class="nav-link" asp-action="Index" asp-area="Admin" asp-controller="Main">Admin</a>
+    </li>
+   
+}
+@if (User.Identity.IsAuthenticated && User.IsInRole("Editor"))
+{
+    <li class="nav-item">
+        <a class="nav-link" asp-action="Index" asp-area="Writers" asp-route-editorProfile="@(Context.Request.HttpContext.Session.GetString("editorUsername"))" asp-route-editorUserName="@(Context.Request.HttpContext.Session.GetString("editorUsername"))" asp-controller="Author">Writer</a>
+    </li>
+}
+@if (User.Identity.IsAuthenticated )
+{
+
+    
+    <li class="nav-item">
+        <a class="nav-link lead"
+           asp-action="Logout" asp-area=""
+           asp-controller="Account" asp-route-returnUrl="@Context.Request.PathAndQuery()">Çıkış</a>
+
+    </li>
+}
+
+
+
+
+    
+else
+{
+    <li class="nav-item">
+        <a class="nav-link"
+           asp-action="Index" asp-area=""
+           asp-controller="Account" asp-route-returnUrl="@Context.Request.PathAndQuery()">Giriş Yap</a>
+
+    </li>
+
+}

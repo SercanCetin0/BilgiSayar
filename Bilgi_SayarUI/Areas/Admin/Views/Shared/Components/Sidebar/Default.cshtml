@@ -1,0 +1,56 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+}
+<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark " style="width: 280px; height:100%;  ">
+    <div class="container">
+        <a  class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+            <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+            <span class="fs-5">Bilgi Sayar</span>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+                <a asp-action="Index" asp-area="Admin" asp-controller="Category" class="nav-link text-white" aria-current="page">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+                    <i class="fa-solid fa-arrow-right"></i>
+                    Categories
+                </a>
+            </li>
+            <li>
+                <a asp-action="Index" asp-area="Admin" asp-controller="Entry" class="nav-link text-white">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                    <i class="fa-solid fa-arrow-right"></i>
+                    Entry
+                </a>
+            </li>
+            <li>
+                <a asp-action="Index" asp-area="Admin" asp-controller="Writer" class="nav-link text-white">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+                    <i class="fa-solid fa-arrow-right"></i>
+                    Writers
+                </a>
+            </li>
+            <li>
+                <a asp-action="Index" asp-area="Admin" asp-controller="Comment" class="nav-link text-white">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+                    <i class="fa-solid fa-arrow-right"></i>
+                    Comments
+                </a>
+            </li>
+            <li>
+                <a asp-action="Index" asp-area="" asp-controller="Default" class="nav-link text-white">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+                    <i class="fa-solid fa-arrow-right"></i>
+                    Web
+                </a>
+            </li>
+        </ul>
+        
+    </div>
+    <hr />
+  
+</div> 

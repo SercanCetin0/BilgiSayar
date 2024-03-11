@@ -1,0 +1,35 @@
+﻿@model Category
+
+
+@{
+}
+<div class="container my-5  border border-1">
+<form method="post" asp-action="UpdateCategory">
+    <div class="form-group">
+        <div class="form-control my-3">
+            <label asp-for="CategoryId"></label>
+              
+                <input type="text" class=" form-control  my-1 " asp-for="CategoryId" />
+        </div>
+            <div class="form-control my-3">
+            <label asp-for="CategoryName"></label>
+                <input type="text" class="form-control my-1" asp-for="CategoryName" />
+        </div>
+        <div class="btn btn-group">
+                <button type="submit" asp-action="UpdateCategory" asp-controller="Category" asp-area="Admin" class="btn btn-warning"> <i class="fa-solid fa-floppy-disk"></i> Update</button>
+                <a asp-action="Index" asp-area="Admin" asp-controller="Category" class="btn btn-danger"> List Categories <i class="fa-solid fa-rotate-right"></i></a>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+</form>
+</div>

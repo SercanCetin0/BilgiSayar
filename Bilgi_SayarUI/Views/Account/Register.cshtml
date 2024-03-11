@@ -1,0 +1,51 @@
+﻿@model UserRegisterDto
+<div class="row my-5" style="position:absolute; top:30%; width:100%">
+    <div class="col-md-4"></div>
+    <div class="col-md-4 shadow">
+        <div class="text-center">
+            <div class="text-danger"  asp-validation-summary="All" ></div>
+
+        </div>
+        <div class="text-center text-dark lead my-3"><h4><i class="fa-solid fa-user"></i>Yeni Hesap Oluştur</h4></div>
+
+        <div class="my-5">
+            <form method="post" >
+                
+
+                <div class="form-floating mb-3">
+                    <input type="text" asp-for="Username" class="form-control" id="floatingInput">
+                    <label for="floatingInput">Kullanıcı Adı</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="email" asp-for="Email" class="form-control" id="floatingInput">
+                    <label for="floatingInput">Email</label>
+                </div>
+                
+                <div class="form-floating">
+                    <input type="password" asp-for="Password" class="form-control" id="floatingPassword">
+                    <label for="floatingPassword">Parola Giriniz</label>
+                </div>
+
+
+                <div class="text-center display-6 my-3 ">
+
+                    <button type="submit" asp-action="Register" asp-controller="Account" class="btn btn-outline-primary "> <i class="fa-solid fa-right-to-bracket"></i>Hesap Aç   </button>
+                    <a asp-action="Index" class="btn btn-outline-dark">Geri Dön</a>
+                </div>
+
+
+
+            </form>
+
+
+
+
+
+        </div>
+    </div>
+    <div class="col-md-34 my-3"></div>
+
+
+
+
+</div>

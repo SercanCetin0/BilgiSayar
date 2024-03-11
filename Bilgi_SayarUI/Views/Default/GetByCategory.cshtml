@@ -1,0 +1,50 @@
+﻿
+@model EntryListViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@* @await Component.InvokeAsync("Slider") *@
+
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
+            @foreach (var item in Model.Entries)
+            {
+                <div class="col mb-5">
+                    <div class="card h-100">
+                        <!-- Product image-->
+                        <img class="card-img-top" src="~/image/@item.İmage" width="80%" height="200px" alt="..." />
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center  ">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder  ">@item.Title</h5>
+                                <!-- Product price-->
+
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center">
+                                <a class="btn btn-outline-primary mt-auto" asp-action="GetDetail" asp-area="" asp-controller="Default" asp-route-id="@item.ContentId">
+                                    Hemen Öğren
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+        </div>
+    </div>
+    <div class="text-center container my-3 ">
+        <div page-model="@Model.pagination" page-action="Index" page-classes-enable="true" page-class="btn"
+             page-class-normal="btn-outline-secondry" page-class-selected="btn-primary" class="btn-group">
+        </div>
+    </div>
+    </div>
+</section>

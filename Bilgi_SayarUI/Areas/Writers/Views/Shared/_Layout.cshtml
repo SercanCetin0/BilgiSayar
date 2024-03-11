@@ -1,0 +1,49 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sayfam</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/all.css" />
+    <link rel="stylesheet" href="~/css/Navbar/Navbar.css" />
+    <link rel="stylesheet" href="~/css/Profile/Profile.css" />
+    
+    @await RenderSectionAsync("Head", false)
+
+</head>
+
+<body class="bg-light">
+    <!--Navbar Start-->
+    <div class="v-100">
+        @await Component.InvokeAsync("Navbar")
+    </div>
+    <!--Navbar End-->
+    <!--RenderBody-->
+    <div class="v-100 my-3 "> @RenderBody()</div>
+
+
+    <!--Script Start-->
+    <script asp-append-version="true" src="~/js/Navbar/Navbar.js"></script>
+    <script asp-append-version="true" src="~/jquery/jquery.min.js"></script>
+    <script asp-append-version="true" src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script asp-append-version="true" src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+    <script asp-append-version="true" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    @await RenderSectionAsync("Scripts",false)
+    <!--Script End-->
+</body>
+
+
+
+</html>

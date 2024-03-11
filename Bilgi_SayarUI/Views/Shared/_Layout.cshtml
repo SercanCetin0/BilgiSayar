@@ -1,0 +1,69 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bilgi Sayar</title>
+
+    <!--Css Start-->
+    <link rel="stylesheet" asp-append-version="true" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" asp-append-version="true" href="~/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" asp-append-version="true" href="~/lib/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" asp-append-version="true" href="~/lib/font-awesome/css/all.css" />
+    <link rel="stylesheet" asp-append-version="true" href="~/css/Navbar/Navbar.css" />
+    <!--Css End-->
+</head>
+
+<body class="bg-light" >
+    <!--Navbar Start-->
+    <div class="v-100">@await Component.InvokeAsync("Navbar") </div>
+    <!--Navbar End-->
+
+    <!--RenderBody-->
+    <div class="v-100 my-3"> @RenderBody()</div>
+
+
+   
+
+    
+    <!--Foother Start-->
+    @* <div class="" style=" position: sticky;
+    bottom: 0;">
+    @await Component.InvokeAsync("Foother")
+    </div> *@
+    <!--Foother End-->
+
+
+
+   <!--Script Start-->
+    <script asp-append-version="true" src="~/js/Navbar/Navbar.js"></script>
+    <script asp-append-version="true" src="~/jquery/jquery.min.js"></script>
+    <script asp-append-version="true" src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script asp-append-version="true" src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+    <script asp-append-version="true" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(document).keydown(function (e) {
+                if (e.keyCode == 37) { // Sol tuşa basıldığında
+                    $('.carousel').carousel('prev');
+                }
+                else if (e.keyCode == 39) { // Sağ tuşa basıldığında
+                    $('.carousel').carousel('next');
+                }
+            });
+        });
+    </script>
+    <!--Script End-->
+</body>
+
+
+
+</html>
