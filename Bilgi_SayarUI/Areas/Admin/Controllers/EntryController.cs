@@ -11,16 +11,18 @@ namespace Bilgi_SayarUI.Areas.Admin.Controllers
     public class EntryController : Controller
     {
         private readonly IEntryService _entryService;
-
-        public EntryController(IEntryService entryService)
+        private readonly IWebHostEnvironment _hostingEnvironment;
+        public EntryController(IEntryService entryService, IWebHostEnvironment hostingEnvironment)
         {
             _entryService = entryService;
+            _hostingEnvironment = hostingEnvironment;
         }
 
-        public IActionResult Index(string? search, bool? statu )
+        public IActionResult Index(string? search, bool? statu)
         {
-            if (!string.IsNullOrEmpty(search)) { 
-                var datas = _entryService.GetWantedEntry(search,statu);
+            if (!string.IsNullOrEmpty(search))
+            {
+                var datas = _entryService.GetWantedEntry(search, statu);
                 return View(datas);
             }
 
@@ -29,36 +31,42 @@ namespace Bilgi_SayarUI.Areas.Admin.Controllers
 
         }
 
-       
+
 
 
 
         [HttpGet]
         public IActionResult UpdateEntry(int id)
         {
-            
-                var model = _entryService.Get(id);
-                if (model.Statu==true)
-                {
-                    model.Statu = false;
-                }
-                else
-                {
-                    model.Statu = true;
-                }
-                _entryService.Update(model);
-                return RedirectToAction("Index");
-            
+
+            var model = _entryService.Get(id);
+            if (model.Statu == true)
+            {
+                model.Statu = false;
+            }
+            else
+            {
+                model.Statu = true;
+            }
+            _entryService.Update(model);
+            return RedirectToAction("Index");
+
         }
 
         [HttpGet]
-        public IActionResult DeleteEntry(int id) 
+        public IActionResult DeleteEntry(int id)
         {
-            
-                var model = _entryService.Get(id);
-                _entryService.Delete(model);
-                return RedirectToAction("Index");
-       
+
+
+            var model = _entryService.Get(id);
+
+
+            string wwwrootPath = _hostingEnvironment.WebRootPath;
+            string imagePath = Path.Combine(wwwrootPath, "image", model.İmage);
+            System.IO.File.Delete(imagePath);
+            _entryService.Delete(model);
+            return RedirectToAction("Index");
+
         }
 
     }

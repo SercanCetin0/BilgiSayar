@@ -3,6 +3,7 @@ using BusinessLogic.Concrete;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using DataAccess.Contexts;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -40,6 +41,9 @@ namespace Bilgi_SayarUI.Infrastructure.Extensions
             services.AddScoped<IContentImageService, ContentImageManager>();
             services.AddScoped<IEntryService, EntryManager>();
             services.AddScoped<IWriterService, WriterManager>();
+           
+            
+
 
         }
         public static void ConfigureRepositoryRegistration(this IServiceCollection services)

@@ -35,6 +35,7 @@ builder.Services.ConfigureSession();
 builder.Services.AddSession();
 
 
+
 var app = builder.Build();
 
 app.ConfigureAndCheckMigration();

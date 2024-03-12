@@ -6,7 +6,7 @@
     <div class="col-md-6 mb-3 my-3 text-center shadow" style="position:absolute; top:25%; left:24%;  ">
    
         <div class="lead my-3  text-center"><i class="fa-solid fa-pen-nib"></i> Yeni Yazı</div>
-<form method="post" class="container my-3   " >
+        <form method="post" class="container my-3" enctype="multipart/form-data">
     
     <input type="hidden"value="@Model.WriterId"/>
 
@@ -32,7 +32,7 @@
     </select>
 
     <div class="row justify-content-between text-left my-3">
-       <input type="file" asp-for="İmage" name="İmage" accept=".jpg, .jpeg, .png">
+       <input type="file"  name="Image" accept=".jpg, .jpeg, .png">
     </div> 
     <div class="mb-3 my-3">
         
