@@ -1,8 +1,11 @@
 ﻿using BusinessLogic.Abstract;
 using BusinessLogic.Concrete;
+using BusinessLogic.ValidationRules.FluentValidation;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using DataAccess.Contexts;
+using Entities.Concrete;
+using FluentValidation;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -34,6 +37,14 @@ namespace Bilgi_SayarUI.Infrastructure.Extensions
                 options.Cookie.IsEssential = true;
             });
         }
+        public static void ConfigureValidationRegistration(this IServiceCollection services)
+        {
+            services.AddScoped<IValidator<Entry>, EntryValidator>();
+            services.AddScoped<IValidator<Category>, CategoryValidator>();
+            services.AddScoped<IValidator<Writer>, WriterValidator>();
+
+        }
+
         public static void ConfigureServiceRegistration(this IServiceCollection services)
         {
             services.AddScoped<ICategoryService, CategoryManager>();
@@ -41,8 +52,8 @@ namespace Bilgi_SayarUI.Infrastructure.Extensions
             services.AddScoped<IContentImageService, ContentImageManager>();
             services.AddScoped<IEntryService, EntryManager>();
             services.AddScoped<IWriterService, WriterManager>();
-           
             
+
 
 
         }

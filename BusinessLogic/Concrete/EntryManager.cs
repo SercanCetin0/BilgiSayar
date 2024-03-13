@@ -1,7 +1,9 @@
 ﻿using BusinessLogic.Abstract;
+using BusinessLogic.ValidationRules.FluentValidation;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.RequestParameters;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,15 +15,22 @@ namespace BusinessLogic.Concrete
     public class EntryManager : IEntryService
     {
         private readonly IEntryDal _entryDal;
-
-        public EntryManager(IEntryDal entryDal)
+        private readonly IValidator<Entry> _validator;
+        public EntryManager(IEntryDal entryDal, IValidator<Entry> validator)
         {
             _entryDal = entryDal;
+            _validator = validator;
         }
 
         public void Add(Entry entry)
         {
-            _entryDal.Add(entry);
+
+            if (_validator.Validate(entry).IsValid)
+            {
+                _entryDal.Add(entry);
+            }
+            
+            
         }
 
         public void Delete(Entry entry)
@@ -62,6 +71,11 @@ namespace BusinessLogic.Concrete
         public List<Entry> GetEntryByDesc()
         {
             return _entryDal.GetEntryByDesc();
+        }
+
+        public List<Entry> GetPassiveEntries()
+        {
+            return _entryDal.GetPassiveEntries();
         }
 
         public List<Entry> GetWantedEntry(string? search, bool? statu)

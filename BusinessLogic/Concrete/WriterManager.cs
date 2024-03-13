@@ -1,6 +1,7 @@
 ﻿using BusinessLogic.Abstract;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,15 +13,20 @@ namespace BusinessLogic.Concrete
     public class WriterManager : IWriterService
     {
         private readonly IWriterDal _writerDal;
+        private readonly IValidator<Writer> _validator;
 
-        public WriterManager(IWriterDal writerDal)
+        public WriterManager(IWriterDal writerDal, IValidator<Writer> validator)
         {
             _writerDal = writerDal;
+            _validator = validator;
         }
 
         public void Add(Writer writer)
         {
-            _writerDal.Add(writer);
+            if (_validator.Validate(writer).IsValid)
+            {
+                _writerDal.Add(writer);
+            }
         }
 
         public void Delete(Writer writer)
@@ -30,7 +36,7 @@ namespace BusinessLogic.Concrete
 
         public Writer Get(int id)
         {
-           return _writerDal.Get(p=>p.WriterId.Equals(id));
+            return _writerDal.Get(p => p.WriterId.Equals(id));
         }
 
         public List<Writer> GetAll()

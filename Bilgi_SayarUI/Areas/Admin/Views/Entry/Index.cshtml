@@ -3,6 +3,11 @@
 
 @{
 }
+<div class="text-center">
+    <div class="text-danger" asp-validation-summary="All"></div> @*Doğrulama hatası olduğunda yansır*@
+
+
+</div>
 <div class="row">
     <div class="col-md-9">
 
@@ -51,6 +56,7 @@
                     <div class="btn btn-group">
                         <a class="btn btn-warning text-black " type="submit" asp-action="UpdateEntry" asp-area="Admin" asp-controller="Entry" asp-route-id="@item.ContentId"><i class="fa-solid fa-wrench"></i> Change The Status</a>
                         <a class="btn btn-outline-danger text-black" type="submit" asp-action="DeleteEntry" asp-area="Admin" asp-controller="Entry" asp-route-id="@item.ContentId">Delete <i class="fa-solid fa-trash"></i></a>
+                                <a class="btn btn-outline-success text-black" type="submit" asp-action="GetDetail" asp-area="" asp-controller="Default" asp-route-id="@item.ContentId">Detail<i class="fa-solid fa-circle-info"></i></a>
 
 
 
@@ -76,15 +82,21 @@
 
 <div class="col-md-3 my-3">
 
-        <form method="get" asp-action="Index" asp-controller="Entry" asp-area="Admin">
+        <form method="get" >
             
             @* Buraya Pasifleri ARa*@
             
             <div class="form-group btn-group my-3 rounded-3">
 
                 <input type="text" class="form-control" name="search" placeholder="Arama" />
-                <button type="submit" class="btn btn-sm btn-primary "><i class="fa-solid fa-magnifying-glass"></i></button>
+                <button type="submit" class="btn btn-sm btn-primary " asp-action="Index" asp-controller="Entry" asp-area="Admin"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
+            <div>
+
+                 <button type="submit" class="btn btn-lg btn-outline-danger" name="statu" value="false" asp-action="Index" asp-controller="Entry" asp-area="Admin">Onaylanacakları Getir!</button>
+ 
+            </div>
+
         </form>
 
 </div>

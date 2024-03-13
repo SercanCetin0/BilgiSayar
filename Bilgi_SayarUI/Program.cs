@@ -28,6 +28,7 @@ builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.ConfigureDbContext(builder.Configuration);
 builder.Services.ConfigureRepositoryRegistration();
 builder.Services.ConfigureServiceRegistration();
+builder.Services.ConfigureValidationRegistration();
 builder.Services.ConfigureRouting();
 builder.Services.ConfigureIdentity();
 builder.Services.AddHttpContextAccessor();

@@ -19,7 +19,7 @@ namespace BusinessLogic.Abstract
         Entry Get(int id);
 
         List<Entry> GetWantedEntry(string? search, bool? statu);
-
+        List<Entry> GetPassiveEntries();
         int GetActiveEntriesCount();
 
         void Add(Entry entry);

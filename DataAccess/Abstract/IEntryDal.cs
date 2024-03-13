@@ -17,6 +17,7 @@ namespace DataAccess.Abstract
         List<Entry> GetByCategory(EntryRequestParameters e, int? categoryId, string? search);
         int GetActiveEntriesCount();
         List<Entry> GetWantedEntry(string? search, bool? statu);
+        List<Entry> GetPassiveEntries();
 
         List<Entry> GetEntryByDesc();
    

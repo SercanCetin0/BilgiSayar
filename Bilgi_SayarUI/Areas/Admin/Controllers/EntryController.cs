@@ -20,17 +20,27 @@ namespace Bilgi_SayarUI.Areas.Admin.Controllers
 
         public IActionResult Index(string? search, bool? statu)
         {
-            if (!string.IsNullOrEmpty(search))
+            if (!string.IsNullOrEmpty(search)  )
             {
                 var datas = _entryService.GetWantedEntry(search, statu);
                 return View(datas);
             }
 
+            if(statu==false)
+            {
+                var datas = _entryService.GetWantedEntry(search, statu);
+                return View(datas);
+            }
             var data = _entryService.GetEntryByDesc();
             return View(data);
 
         }
-
+        
+        public IActionResult GetPassiveEntry()
+        {
+            var data = _entryService.GetPassiveEntries();
+            return RedirectToAction("Index");
+        }
 
 
 

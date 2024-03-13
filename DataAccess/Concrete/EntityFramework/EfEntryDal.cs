@@ -23,22 +23,22 @@ namespace DataAccess.Concrete.EntityFramework
     public class EfEntryDal : EntityRepositoryBase<Entry>, IEntryDal
     {
         private readonly BilgiSayarDbContext _context;
- 
+
         public EfEntryDal(BilgiSayarDbContext context) : base(context)
         {
             _context = context;
         }
 
-       
+
 
         public List<Entry> GetActiveEntries(EntryRequestParameters? e)
         {
 
 
-            var data = _context.Set<Entry>().Where(x => x.Statu.Equals(true)).OrderByDescending(x => x.ReleaseDate).ToList().ToPaginates( e.PageNumber,e.PageSize);
-             //  var data = from x in _context.Entries where x.Statu == true select x;
-                return data.ToList();
-            
+            var data = _context.Set<Entry>().Where(x => x.Statu.Equals(true)).OrderByDescending(x => x.ReleaseDate).ToList().ToPaginates(e.PageNumber, e.PageSize);
+            //  var data = from x in _context.Entries where x.Statu == true select x;
+            return data.ToList();
+
         }
         public int GetActiveEntriesCount()
         {
@@ -56,7 +56,7 @@ namespace DataAccess.Concrete.EntityFramework
 
             if (categoryId == null && string.IsNullOrWhiteSpace(search))
             {
-                return _context.Set<Entry>().ToList().ToPaginates(e.PageNumber,e.PageSize);// Daha sonra Allert olucak
+                return _context.Set<Entry>().ToList().ToPaginates(e.PageNumber, e.PageSize);// Daha sonra Allert olucak
 
             }
             else if (categoryId == null && !string.IsNullOrWhiteSpace(search))
@@ -73,31 +73,45 @@ namespace DataAccess.Concrete.EntityFramework
         }
         public List<Entry> GetDetailCategory()
         {
-           
-                var data = (from entry in _context.Entries
-                            join category   in  _context.Categories on entry.CategoryId equals category.CategoryId
-                            join writer in _context.Writers on entry.WriterId equals writer.WriterId
-                            select new Entry
-                            {
-                                ContentId = entry.ContentId,
-                                //CategoryName = category.CategoryName,
-                                Title = entry.Title,
-                                Text = entry.Text,
-                                //WriterName=writer.WriterFirstName+ " " +writer.WriterLastName
-                                
-                            }).ToList();
 
-                return data;
-            }
+            var data = (from entry in _context.Entries
+                        join category in _context.Categories on entry.CategoryId equals category.CategoryId
+                        join writer in _context.Writers on entry.WriterId equals writer.WriterId
+                        select new Entry
+                        {
+                            ContentId = entry.ContentId,
+                            //CategoryName = category.CategoryName,
+                            Title = entry.Title,
+                            Text = entry.Text,
+                            //WriterName=writer.WriterFirstName+ " " +writer.WriterLastName
+
+                        }).ToList();
+
+            return data;
+        }
 
         public List<Entry> GetWantedEntry(string? search, bool? statu)
         {
-           return  _context.Set<Entry>().Where(x => x.Title.ToLower().Contains(search.ToLower()) || x.Statu==statu).OrderByDescending(z=>z.ReleaseDate).ToList();
+           
+          if (search == null)
+            {
+                return _context.Set<Entry>().Where(x => x.Statu == statu).OrderByDescending(z => z.ReleaseDate).ToList();
+            }
+
+
+                return _context.Set<Entry>().Where(x => x.Title.ToLower().Contains(search.ToLower()) || x.Statu == statu).OrderByDescending(z => z.ReleaseDate).ToList();
+            
+           
         }
         public List<Entry> GetEntryByDesc()
         {
-            return  _context.Set<Entry>().OrderByDescending(z => z.ReleaseDate).ToList();
+            return _context.Set<Entry>().OrderByDescending(z => z.ReleaseDate).ToList();
         }
-    }        
+
+        public List<Entry> GetPassiveEntries()
+        {
+            return _context.Set<Entry>().Where(x => x.Statu.Equals(false)).ToList();
+        }
     }
+}
 
