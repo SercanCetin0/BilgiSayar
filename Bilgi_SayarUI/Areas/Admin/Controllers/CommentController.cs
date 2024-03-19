@@ -25,21 +25,13 @@ namespace Bilgi_SayarUI.Areas.Admin.Controllers
             [HttpGet]
             public IActionResult UpdateComment(int id)
             {
-            if (ModelState.IsValid)
-            {
+            
                 var model = _commentService.Get(id);
-                if (model.CommentStatus==true)
-                {
-                    model.CommentStatus = false;
-                }
-                else
-                {
-                    model.CommentStatus = true;
-                }
+               
                 _commentService.Update(model);
                 return RedirectToAction("Index");
-            }
-            return BadRequest();
+            
+           
         }
 
 

@@ -130,6 +130,7 @@ namespace Bilgi_SayarUI.Areas.Writers.Controllers
                 writer.WriterImage = image;
             }
 
+            writer.WriterStatu = true;
             _writerService.Update(writer);
 
 

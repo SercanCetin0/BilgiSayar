@@ -20,18 +20,8 @@ namespace Bilgi_SayarUI.Areas.Admin.Controllers
 
         public IActionResult Index(string? search, bool? statu)
         {
-            if (!string.IsNullOrEmpty(search)  )
-            {
-                var datas = _entryService.GetWantedEntry(search, statu);
-                return View(datas);
-            }
-
-            if(statu==false)
-            {
-                var datas = _entryService.GetWantedEntry(search, statu);
-                return View(datas);
-            }
-            var data = _entryService.GetEntryByDesc();
+            var data=_entryService.GetWantedEntry(search, statu);
+          //  var data = _entryService.GetEntryByDesc();
             return View(data);
 
         }
@@ -49,15 +39,7 @@ namespace Bilgi_SayarUI.Areas.Admin.Controllers
         public IActionResult UpdateEntry(int id)
         {
 
-            var model = _entryService.Get(id);
-            if (model.Statu == true)
-            {
-                model.Statu = false;
-            }
-            else
-            {
-                model.Statu = true;
-            }
+            var model = _entryService.Get(id);         
             _entryService.Update(model);
             return RedirectToAction("Index");
 

@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace BusinessLogic.Concrete
 {
@@ -80,11 +81,31 @@ namespace BusinessLogic.Concrete
 
         public List<Entry> GetWantedEntry(string? search, bool? statu)
         {
-           return _entryDal.GetWantedEntry(search, statu );
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                return _entryDal.GetWantedEntry(search, statu);
+                
+            }
+
+            if (statu == false)
+            {
+                return _entryDal.GetWantedEntry(search, statu);
+               
+            }
+            return _entryDal.GetEntryByDesc();
         }
 
         public void Update(Entry entry)
         {
+            if (entry.Statu == true)
+            {
+                entry.Statu = false;
+            }
+            else
+            {
+                entry.Statu = true;
+            }
             _entryDal.Update(entry);
         }
     }
