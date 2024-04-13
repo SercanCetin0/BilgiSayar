@@ -9,6 +9,7 @@
 
 # Kullanılan Teknolojiler
 - Asp.net Core MVC
+- Web Api
 - İdentity
 - Fluent Validation 
 - Dependency Injection 
@@ -16,7 +17,8 @@
 - Solid Prensipleri 
 - Pagination
 - Entity Framewrok Core
-- Code First Yaklaşım 
+- Code First Yaklaşım
+- Global Hata Yönetimi
 - HTML5
 - CSS 
 - Bootstrapt
