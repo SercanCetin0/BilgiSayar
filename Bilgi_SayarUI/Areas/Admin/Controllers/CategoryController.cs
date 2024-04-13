@@ -20,7 +20,7 @@ namespace Bilgi_SayarUI.Areas.Admin.Controllers
 
         public CategoryController(ICategoryService categoryService)
         {
-            _categoryService = categoryService;
+            _categoryService = categoryService ;
 
         }
 

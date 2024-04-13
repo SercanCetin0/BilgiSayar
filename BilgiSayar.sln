@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\Da
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLogic", "BusinessLogic\BusinessLogic.csproj", "{7D51CB31-7619-44BC-B2DC-DFDD1C9E4A61}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bilgi_SayarUI", "Bilgi_SayarUI\Bilgi_SayarUI.csproj", "{236DF798-DEB5-4BE0-A469-90F326503329}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bilgi_SayarUI", "Bilgi_SayarUI\Bilgi_SayarUI.csproj", "{236DF798-DEB5-4BE0-A469-90F326503329}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{F7F158E3-E791-464D-90E8-FA8BC843BB70}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{236DF798-DEB5-4BE0-A469-90F326503329}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{236DF798-DEB5-4BE0-A469-90F326503329}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{236DF798-DEB5-4BE0-A469-90F326503329}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7F158E3-E791-464D-90E8-FA8BC843BB70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7F158E3-E791-464D-90E8-FA8BC843BB70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7F158E3-E791-464D-90E8-FA8BC843BB70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7F158E3-E791-464D-90E8-FA8BC843BB70}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

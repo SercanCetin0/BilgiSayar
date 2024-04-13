@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Contexts
 {
-    public class BilgiSayarDbContext :IdentityDbContext<IdentityUser>
+    public class BilgiSayarDbContext : IdentityDbContext<IdentityUser>
     {
         public BilgiSayarDbContext(DbContextOptions<BilgiSayarDbContext> options)
      : base(options)
@@ -23,21 +23,20 @@ namespace DataAccess.Contexts
         {
 
             // modelBuilder.Configurations.Add(new ProductMap());//Mapping işlemi için ekleme
-            
 
-            modelBuilder.Entity<ContentImage>().HasKey(c => c.ImageId);
+
+
             modelBuilder.Entity<Entry>().HasKey(x => x.ContentId);
-            modelBuilder.Entity<Comment>().HasKey(x => x.CommentId);
+
             modelBuilder.Entity<Writer>().HasKey(x => x.WriterId);
             modelBuilder.Entity<Category>().HasKey(x => x.CategoryId);
 
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             base.OnModelCreating(modelBuilder);
         }
-      
+
         public DbSet<Category> Categories { get; set; }
-        public DbSet<Comment> Comments { get; set; }
-        public DbSet<ContentImage> ContentImages { get; set; }
+
         public DbSet<Entry> Entries { get; set; }
         public DbSet<Writer> Writers { get; set; }
 

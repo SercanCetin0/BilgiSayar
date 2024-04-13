@@ -1,6 +1,7 @@
 ﻿using BusinessLogic.Abstract;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.ErrorModels.Exceptions;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using BusinessLogic.Controls;
 namespace BusinessLogic.Concrete
 {
 
@@ -23,6 +25,8 @@ namespace BusinessLogic.Concrete
         }
         public void Add(Category category)
         {
+            DataControl.ControlNullData(category);
+
             if (_validator.Validate(category).IsValid)
             {
                 _categoryDal.Add(category);
@@ -31,22 +35,34 @@ namespace BusinessLogic.Concrete
 
         public void Delete(Category category)
         {
+            DataControl.ControlNullData(category);
             _categoryDal.Delete(category);
         }
 
         public Category Get(int id)
         {
-            return _categoryDal.Get(x => x.CategoryId.Equals(id));
+            DataControl.ControlNullData(id);
+            var data = _categoryDal.Get(x => x.CategoryId.Equals(id));
+            DataControl.ControlFoundData(data);
+            return data;
         }
 
         public List<Category> GetAll()
         {
-            return _categoryDal.GetAll();
+            var data = _categoryDal.GetAll();
+            DataControl.ControlFoundData(data);
+            return data;
         }
 
         public void Update(Category category)
         {
+            
+            
+            DataControl.ControlNullData(category);
             _categoryDal.Update(category);
         }
+
+        
+
     }
 }

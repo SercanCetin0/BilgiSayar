@@ -18,9 +18,9 @@ namespace Bilgi_SayarUI.Infrastructure.Extensions
         public static void ConfigureDbContext(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddScoped<BilgiSayarDbContext>().AddDbContext<BilgiSayarDbContext>(
-                options => { options.UseSqlServer(configuration.GetConnectionString("sqlconnection"), builder => builder.MigrationsAssembly("Bilgi_SayarUI"));
+                options => { options.UseSqlServer(configuration.GetConnectionString("sqlconnection"), builder => builder.MigrationsAssembly("Bilgi_SayarUI"));//Bilgi_SayarUI
                     options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
-                    options.EnableSensitiveDataLogging(true);
+                    options.EnableSensitiveDataLogging(false);
                 }
             
                 );
@@ -48,8 +48,7 @@ namespace Bilgi_SayarUI.Infrastructure.Extensions
         public static void ConfigureServiceRegistration(this IServiceCollection services)
         {
             services.AddScoped<ICategoryService, CategoryManager>();
-            services.AddScoped<ICommentService, CommentManager>();
-            services.AddScoped<IContentImageService, ContentImageManager>();
+         
             services.AddScoped<IEntryService, EntryManager>();
             services.AddScoped<IWriterService, WriterManager>();
             
@@ -60,8 +59,7 @@ namespace Bilgi_SayarUI.Infrastructure.Extensions
         public static void ConfigureRepositoryRegistration(this IServiceCollection services)
         {
 
-            services.AddScoped<ICommentDal, EfCommentDal>();
-            services.AddScoped<IContentImageDal, EfContentImageDal>();
+            
             services.AddScoped<IEntryDal, EfEntryDal>();
             services.AddScoped<ICategoryDal, EfCategoryDal>();
             services.AddScoped<IWriterDal, EfWriterDal>();

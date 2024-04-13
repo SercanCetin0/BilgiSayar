@@ -1,4 +1,5 @@
 ﻿using BusinessLogic.Abstract;
+using BusinessLogic.Controls;
 using BusinessLogic.ValidationRules.FluentValidation;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -25,6 +26,7 @@ namespace BusinessLogic.Concrete
 
         public void Add(Entry entry)
         {
+            DataControl.ControlNullData(entry);
 
             if (_validator.Validate(entry).IsValid)
             {
@@ -36,16 +38,22 @@ namespace BusinessLogic.Concrete
 
         public void Delete(Entry entry)
         {
+            DataControl.ControlNullData(entry);
+            DataControl.ControlFoundData(entry);
             _entryDal.Delete(entry);
         }
 
         public Entry Get(int id)
         {
-            return _entryDal.Get(x => x.ContentId.Equals(id));
+            DataControl.ControlNullData(id);
+            var data= _entryDal.Get(x => x.ContentId.Equals(id));
+            DataControl.ControlFoundData(data);
+            return data;
         }
 
         public List<Entry> GetActiveEntries(EntryRequestParameters e)
         {
+            DataControl.ControlNullData(e);
             return _entryDal.GetActiveEntries(e);
         }
 
@@ -61,6 +69,7 @@ namespace BusinessLogic.Concrete
 
         public List<Entry> GetByCategory(EntryRequestParameters e, int? categoryId, string? search)
         {
+
            return _entryDal.GetByCategory( e, categoryId,search);
         }
 
@@ -98,6 +107,8 @@ namespace BusinessLogic.Concrete
 
         public void Update(Entry entry)
         {
+            DataControl.ControlNullData(entry);
+            
             if (entry.Statu == true)
             {
                 entry.Statu = false;
@@ -108,5 +119,6 @@ namespace BusinessLogic.Concrete
             }
             _entryDal.Update(entry);
         }
+
     }
 }
