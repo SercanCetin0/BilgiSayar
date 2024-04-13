@@ -1,4 +1,5 @@
 ﻿using BusinessLogic.Abstract;
+using BusinessLogic.Controls;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using FluentValidation;
@@ -23,6 +24,7 @@ namespace BusinessLogic.Concrete
 
         public void Add(Writer writer)
         {
+            DataControl.ControlNullData(writer);
             if (_validator.Validate(writer).IsValid)
             {
                 _writerDal.Add(writer);
@@ -31,12 +33,16 @@ namespace BusinessLogic.Concrete
 
         public void Delete(Writer writer)
         {
+            DataControl.ControlNullData(writer);
             _writerDal.Delete(writer);
         }
 
         public Writer Get(int id)
         {
-            return _writerDal.Get(p => p.WriterId.Equals(id));
+            DataControl.ControlNullData(id);
+            var data = _writerDal.Get(p => p.WriterId.Equals(id));
+            DataControl.ControlFoundData(data);
+            return data;
         }
 
         public List<Writer> GetAll()
@@ -46,11 +52,14 @@ namespace BusinessLogic.Concrete
 
         public Writer GetWriterByUsername(string username)
         {
+            DataControl.ControlNullData(username);
+
             return _writerDal.GetWriterByUsername(username);
         }
 
         public void Update(Writer writer)
         {
+            DataControl.ControlNullData(writer);
             _writerDal.Update(writer);
         }
     }
