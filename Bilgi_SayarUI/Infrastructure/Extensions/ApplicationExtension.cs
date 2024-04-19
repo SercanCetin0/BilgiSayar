@@ -1,4 +1,7 @@
-﻿using DataAccess.Contexts;
+﻿using BusinessLogic.Abstract;
+using DataAccess.Contexts;
+using Entities.ErrorModels.Details;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -32,6 +35,46 @@ namespace Bilgi_SayarUI.Infrastructure.Extensions
 
         }
 
+        public static void ConfigureLoggerService(this WebApplication app, ILoggerService logger)
+        {
+            
+            app.UseExceptionHandler(appErr =>
+            {
+                appErr.Run(async context =>
+                {
+
+                    context.Response.ContentType = "application/json";
+
+                    var contextFeature = context.Features.Get<IExceptionHandlerFeature>();
+                    if (contextFeature != null)
+                    {
+
+                        context.Response.StatusCode = contextFeature.Error switch
+                        {
+
+                            NotFoundException => StatusCodes.Status404NotFound,
+                            EmptyData => StatusCodes.Status204NoContent,
+                            _ => StatusCodes.Status500InternalServerError
+                           
+
+
+                        };
+
+
+                        logger.LogError($"Ters Gitti {contextFeature.Error}");
+                        await context.Response.WriteAsync(
+                            new ErrorDetail()
+                            {
+                                StatusCode = context.Response.StatusCode,
+                                Message = contextFeature.Error.Message
+
+                            }.ToString());
+                    }
+
+                });
+
+            });
+        }
         public static async void ConfugireDefaultAdmin(this IApplicationBuilder app)
         {
 

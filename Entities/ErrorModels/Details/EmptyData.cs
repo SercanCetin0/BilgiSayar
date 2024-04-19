@@ -14,4 +14,5 @@ namespace Entities.ErrorModels.Details
         }
 
     }
+
 }

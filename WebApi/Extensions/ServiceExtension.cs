@@ -1,4 +1,6 @@
-﻿using DataAccess.Contexts;
+﻿using BusinessLogic.Abstract;
+using BusinessLogic.Concrete;
+using DataAccess.Contexts;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
 
@@ -18,6 +20,7 @@ namespace WebApi.Extensions
                );
 
         }
+     
 
     }
 }

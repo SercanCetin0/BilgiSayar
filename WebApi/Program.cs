@@ -1,4 +1,5 @@
 using Bilgi_SayarUI.Infrastructure.Extensions;
+using BusinessLogic.Abstract;
 using WebApi.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +14,7 @@ builder.Services.AddControllers()
 builder.Services.RegisterDbContext(builder.Configuration);
 builder.Services.ConfigureRepositoryRegistration();
 builder.Services.ConfigureServiceRegistration();
+
 builder.Services.ConfigureValidationRegistration();
 builder.Services.ConfigureRouting();
 builder.Services.ConfigureIdentity();
@@ -27,6 +29,8 @@ builder.Services.AddSwaggerGen();
 
 
 var app = builder.Build();
+var logger = app.Services.GetRequiredService<ILoggerService>();
+app.ConfigureLoggerService(logger);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

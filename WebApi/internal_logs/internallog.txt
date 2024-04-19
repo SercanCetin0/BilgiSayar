@@ -1,0 +1,8 @@
+2024-04-15 14:15:48.9208 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-15 14:15:48.9298 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-15 14:15:48.9298 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\SercanBilgisayar\source\repos\BilgiSayar\WebApi\bin\Debug\net7.0\NLog.config
+2024-04-15 14:15:48.9471 Info Configuration initialized.
+2024-04-15 14:19:30.0005 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-15 14:19:30.0088 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-15 14:19:30.0088 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\SercanBilgisayar\source\repos\BilgiSayar\WebApi\bin\Debug\net7.0\NLog.config
+2024-04-15 14:19:30.0256 Info Configuration initialized.

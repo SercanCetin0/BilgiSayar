@@ -1,4 +1,6 @@
-﻿using Entities.ErrorModels.Exceptions;
+﻿using BusinessLogic.Abstract;
+using Entities.ErrorModels.Exceptions;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +11,15 @@ namespace BusinessLogic.Controls
 {
     public static class DataControl
     {
+        
 
         public static void ControlNullData(object entity)
         {
-            if (entity is null) { throw new ObjectEmptyDataException(); }
+            if (entity is null) 
+            {
+                   
+                throw new ObjectEmptyDataException(); 
+            }
         }
         public static void ControlFoundData(object entity)
         {

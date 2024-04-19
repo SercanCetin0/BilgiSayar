@@ -13,7 +13,7 @@ namespace Bilgi_SayarUI.DependencyResolvers.Ninject
         
         public override void Load()
         {
-            Bind<ICategoryService>().To<CategoryManager>().InSingletonScope();        
+            Bind<ICategoryService>().To<CategoryManager>().InSingletonScope();       
             Bind<IEntryService>().To<EntryManager>().InSingletonScope();
             Bind<IWriterService>().To<WriterManager>().InSingletonScope();
             Bind<ICategoryDal>().To<EfCategoryDal>().InSingletonScope();            

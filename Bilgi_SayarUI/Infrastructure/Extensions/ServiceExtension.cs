@@ -47,11 +47,10 @@ namespace Bilgi_SayarUI.Infrastructure.Extensions
 
         public static void ConfigureServiceRegistration(this IServiceCollection services)
         {
-            services.AddScoped<ICategoryService, CategoryManager>();
-         
+            services.AddScoped<ICategoryService, CategoryManager>();       
             services.AddScoped<IEntryService, EntryManager>();
             services.AddScoped<IWriterService, WriterManager>();
-            
+            services.AddSingleton<ILoggerService, LoggerManager>();
 
 
 
