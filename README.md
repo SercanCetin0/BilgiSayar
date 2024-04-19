@@ -24,11 +24,11 @@
 - Bootstrapt
 - Microsoft SQL Server
 
-# Proje Hakkında
+# Proje Hakkında ( HALA GELİŞTİRME AŞAMASINDA!!!)
 - Projemiz Kullanıcı - Yazar - Admin İlişkisinin Olduğu Bir **Bilgi Platfromudur.**
 - Yazarların Girdiği Bilgiler Admin **Onayı ve İncelemesinden** Geçtikten Sonra Yayınlanmaktadır.
 - Bu Projeyi **Solid Prensiplerine** Benimseyip, **Repository Desing Pattern** Bağlı Kalarak Proje Geliştirilmiştir.
 - Veritabanı olarak Microsoft SQL Server Kullanılmıştır.
 
 
-İncelemenizden Dolayı Teşekkürler, Saygılarımla.
+İncelemenizden Dolayı Teşekkürler, Saygılarımla. 
