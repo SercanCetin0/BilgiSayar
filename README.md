@@ -12,11 +12,12 @@
 - Web Api
 - İdentity
 - Fluent Validation 
-- Dependency Injection 
+- Dependency Injection Pattern
 - Repository Desing Pattern
 - Solid Prensipleri 
 - Pagination
-- Entity Framewrok Core
+- Entity Framework Core
+- LINQ
 - Code First Yaklaşım
 - Global Hata Yönetimi
 - HTML5
